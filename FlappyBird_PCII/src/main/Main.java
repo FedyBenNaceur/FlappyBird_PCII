@@ -1,3 +1,5 @@
+/*Classe main qui s'occupe de l'instanciation des attributs de Etat Affichage et Controle */
+
 package main;
 //mailto:thi-thuong-huyen.nguyen@universite-paris-saclay.fr
 
