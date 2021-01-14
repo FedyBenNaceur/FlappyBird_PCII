@@ -37,7 +37,7 @@ public class Affichage extends JPanel {
      * @param hauteur : hauteur de l'eclipse 
      * @param g
      */
-	public void flyBird(int x, int y, int largeur, int hauteur, Graphics g) {
+	private void flyBird(int x, int y, int largeur, int hauteur, Graphics g) {
 		g.drawOval(x, y, largeur, hauteur);
 	}
 	/*Initialise l'attribut player */

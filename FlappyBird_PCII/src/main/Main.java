@@ -1,7 +1,7 @@
 /*Classe main qui s'occupe de l'instanciation des attributs de Etat Affichage et Controle */
+//mailto:thi-thuong-huyen.nguyen@universite-paris-saclay.fr
 
 package main;
-//mailto:thi-thuong-huyen.nguyen@universite-paris-saclay.fr
 
 import javax.swing.JFrame;
 
