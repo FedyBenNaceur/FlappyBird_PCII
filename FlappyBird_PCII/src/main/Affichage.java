@@ -30,7 +30,7 @@ public class Affichage extends JPanel {
 	}
 	
     /**flyBird
-     *  dessine l’éclipse qui représente l'oiseau dans le jeu à partir des coordonnées prédéfinis
+     * dessine l’éclipse qui représente l'oiseau dans le jeu à partir des coordonnées prédéfinis
      * @param x 
      * @param y
      * @param largeur :largeur de l'eclipse 

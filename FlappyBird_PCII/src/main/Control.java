@@ -1,4 +1,4 @@
-/**Control 
+/**Control  
  * Classe qui implemente l'interface MouseListener et qui permet de notifier l'affichage d'un changement eventuel 
  * declenché par l'utilisateur 
  */

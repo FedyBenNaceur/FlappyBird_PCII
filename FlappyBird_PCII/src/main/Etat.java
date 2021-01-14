@@ -1,7 +1,7 @@
-/*Etat 
+/*Etat  
  * La classe Etat définit une variable hauteur ainsi qu’une méthode d’accès getHauteur et une méthode de modification jump.
  *  Cette dernière permet d’augmenter la valeur de la hauteur, 
- *  tout en restant bornée par les dimensions définies dans la classe Affichage.
+ *  tout en restant bornée par les dimensions définies dans la classe Affichage .
  */
 
 package main;
