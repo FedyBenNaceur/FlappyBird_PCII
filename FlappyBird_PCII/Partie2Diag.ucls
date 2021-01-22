@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="Model.Etat" project="FlappyBird_PCII" file="/FlappyBird_PCII/src/Model/Etat.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="118" x="247" y="590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="Control.Control" project="FlappyBird_PCII" 
+    file="/FlappyBird_PCII/src/Control/Control.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="193" x="405" y="590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="Model.Parcours" project="FlappyBird_PCII" 
+    file="/FlappyBird_PCII/src/Model/Parcours.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="140" x="638" y="590"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="Control.Voler" project="FlappyBird_PCII" 
+    file="/FlappyBird_PCII/src/Control/Voler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="109" x="247" y="253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="main.Main" project="FlappyBird_PCII" file="/FlappyBird_PCII/src/main/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="250" y="114"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="Control.Avancer" project="FlappyBird_PCII" 
+    file="/FlappyBird_PCII/src/Control/Avancer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="124" x="405" y="114"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="Vue.Affichage" project="FlappyBird_PCII" 
+    file="/FlappyBird_PCII/src/Vue/Affichage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="188" x="405" y="253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="8">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="9" name="p"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="12" name="player"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="15" name="c"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="game"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="21" name="player"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="24" name="game"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="27" name="game"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="30" name="game"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

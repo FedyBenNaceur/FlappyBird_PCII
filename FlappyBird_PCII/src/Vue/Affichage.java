@@ -11,6 +11,7 @@
 
 package Vue;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -35,6 +36,7 @@ public class Affichage extends JPanel {
 	/* constructeur de la classe Affichage */
 	public Affichage() {
 		this.setPreferredSize(new Dimension(LARGEUR, HAUTEUR));
+		this.setBackground(Color.cyan);
 		this.score = new JLabel ("Score	") ;
 		this.add(score);	
 	}
@@ -50,6 +52,7 @@ public class Affichage extends JPanel {
 	 * @param g
 	 */
 	private void flyBird(int x, int y, int largeur, int hauteur, Graphics g) {
+		g.setColor(Color.BLACK);
 		g.drawOval(x, y, largeur, hauteur);
 	}
 
@@ -88,6 +91,7 @@ public class Affichage extends JPanel {
 		Point[] tmp = p.getParcours();
 		try {
 			for (int i = 0; i < p.points.size()-2; i++) {
+				g.setColor(Color.MAGENTA);
 				g.drawLine(tmp[i].x, tmp[i].y, tmp[i + 1].x, tmp[i + 1].y);
 			}
 		} catch (Exception e) {
