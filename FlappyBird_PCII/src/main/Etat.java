@@ -9,7 +9,7 @@ package main;
 public class Etat {
 	private int x;
 	private int hauteur;
-	private final int Speed = 20; // Attribut qui definit la vitesse avec laquelle l'eclipse se deplace
+	public final int Speed = 20; // Attribut qui definit la vitesse avec laquelle l'eclipse se deplacer
 	private Affichage game;
 
 	/* constructeur de la classe Etat */
@@ -37,6 +37,15 @@ public class Etat {
 
 	public int getX() {
 		return this.x;
+	}
+	/**moveDown 
+	 * methode qui permet de mettre à jour la position du oiseau en le fesant redescendre 
+	 */
+	public void moveDownn () {
+		if ((hauteur + game.HEIGHT) < game.HAUTEUR)
+		this.hauteur += Speed ;
+		this.game.revalidate();
+		this.game.repaint();
 	}
 
 }

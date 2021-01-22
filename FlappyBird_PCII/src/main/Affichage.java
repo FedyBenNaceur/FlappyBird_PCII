@@ -13,48 +13,79 @@ package main;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import javax.swing.JFrame;
+import java.awt.Point;
+
+
 import javax.swing.JPanel;
 
 public class Affichage extends JPanel {
-	public final int LARGEUR = 600;//largeur et hauteur correspondent respectivement a la largeur et hauteur de la Panel
+	public final int LARGEUR = 600;// largeur et hauteur correspondent respectivement a la largeur et hauteur de la Panel
 	public final int HAUTEUR = 400;
-	public final int HEIGHT=100; //Les deux variables height et width représentent les dimensions de l’éclipse
-	public final int WIDTH=50;
+	public final int HEIGHT = 100; // Les deux variables height et width représentent les dimensions de l’éclipse
+	public final int WIDTH = 50;
 	public Etat player;
-	public Control c ;
-	
-    /*constructeur de la classe Affichage*/
+	public Control c;
+	public Parcours p;
+
+	/* constructeur de la classe Affichage */
 	public Affichage() {
-		this.setPreferredSize(new Dimension(LARGEUR, HAUTEUR));	
+		this.setPreferredSize(new Dimension(LARGEUR, HAUTEUR));
 	}
-	
-    /**flyBird
-     * dessine l’éclipse qui représente l'oiseau dans le jeu à partir des coordonnées prédéfinis
-     * @param x 
-     * @param y
-     * @param largeur :largeur de l'eclipse 
-     * @param hauteur : hauteur de l'eclipse 
-     * @param g
-     */
+
+	/**
+	 * flyBird dessine l’éclipse qui représente l'oiseau dans le jeu à partir des
+	 * coordonnées prédéfinis
+	 * 
+	 * @param x
+	 * @param y
+	 * @param largeur :largeur de l'eclipse
+	 * @param hauteur : hauteur de l'eclipse
+	 * @param g
+	 */
 	private void flyBird(int x, int y, int largeur, int hauteur, Graphics g) {
 		g.drawOval(x, y, largeur, hauteur);
 	}
-	/*Initialise l'attribut player */
-	public void initialiseEtat(Etat e ) {
-		this.player = e ;
+
+	/* Initialise l'attribut player */
+	public void initialiseEtat(Etat e) {
+		this.player = e;
 	}
-	
-	/*Initialise l'attribut c */
-	public void initialiseControl(Control c ) {
+
+	/* Initialise l'attribut c */
+	public void initialiseControl(Control c) {
 		this.c = c;
 		this.addMouseListener(this.c);
 	}
-    /*Affichage*/
+
+	/* Initialise Parcours */
+	public void initialiseParcours(Parcours p) {
+		this.p = p;
+	}
+
+	/* Affichage */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		flyBird(player.getX(), player.getHauteur(), WIDTH, HEIGHT, g);
+		paintParcours(g);
+	}
+
+
+	
+	/**paintParcours
+	 * Procedure qui permet de peindre la ligne brisée 
+	 * @param g 
+	 */
+	public void paintParcours(Graphics g) {
+		Point[] tmp = p.getParcours();
+		try {
+			for (int i = 0; i < p.points.size()-2; i++) {
+				g.drawLine(tmp[i].x, tmp[i].y, tmp[i + 1].x, tmp[i + 1].y);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.print("tneket");
+		}
 
 	}
 
