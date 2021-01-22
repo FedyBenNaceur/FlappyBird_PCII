@@ -1,5 +1,5 @@
 /*class Parcours qui s'occupe de la logique derriere la ligne brisée*/
-package main;
+package main; 
 
 import java.awt.Point;
 import java.util.ArrayList;
