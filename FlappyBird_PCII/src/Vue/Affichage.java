@@ -9,14 +9,18 @@
 
  */
 
-package main;
+package Vue;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
-
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Control.Control;
+import Model.Etat;
+import Model.Parcours;
 
 public class Affichage extends JPanel {
 	public final int LARGEUR = 600;// largeur et hauteur correspondent respectivement a la largeur et hauteur de la Panel
@@ -26,10 +30,13 @@ public class Affichage extends JPanel {
 	public Etat player;
 	public Control c;
 	public Parcours p;
+	private JLabel score ;
 
 	/* constructeur de la classe Affichage */
 	public Affichage() {
 		this.setPreferredSize(new Dimension(LARGEUR, HAUTEUR));
+		this.score = new JLabel ("Score	") ;
+		this.add(score);	
 	}
 
 	/**
@@ -68,6 +75,7 @@ public class Affichage extends JPanel {
 		super.paint(g);
 		flyBird(player.getX(), player.getHauteur(), WIDTH, HEIGHT, g);
 		paintParcours(g);
+		setScore();
 	}
 
 
@@ -87,6 +95,14 @@ public class Affichage extends JPanel {
 			System.out.print("tneket");
 		}
 
+	}
+	
+	
+	/**setScore
+	 * methode qui met à jour la valeur du score
+	 */
+	private void setScore () {
+		this.score.setText("Score:"+this.p.getPosition());
 	}
 
 }

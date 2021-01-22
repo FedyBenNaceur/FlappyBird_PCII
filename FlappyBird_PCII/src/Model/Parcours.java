@@ -1,9 +1,11 @@
 /*class Parcours qui s'occupe de la logique derriere la ligne brisée*/
-package main; 
+package Model; 
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Vue.Affichage;
 
 
 public class Parcours {

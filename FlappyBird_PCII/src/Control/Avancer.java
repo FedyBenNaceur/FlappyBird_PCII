@@ -1,5 +1,6 @@
-package main;
+package Control;
 
+import Vue.Affichage;
 
 // classe Avancer ; Une classe qui gere le defilement de la ligne brisée
 public class Avancer extends Thread {

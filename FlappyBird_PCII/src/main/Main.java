@@ -5,6 +5,13 @@ package main;
 
 import javax.swing.JFrame;
 
+import Control.Avancer;
+import Control.Control;
+import Control.Voler;
+import Model.Etat;
+import Model.Parcours;
+import Vue.Affichage;
+
 public class Main {
 	public static void main(String[] args) {
 		Affichage panel = new Affichage();

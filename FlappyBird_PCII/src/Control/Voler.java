@@ -1,4 +1,6 @@
-package main;
+package Control;
+
+import Model.Etat;
 
 public class Voler extends Thread {
 	private Etat player;

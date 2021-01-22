@@ -3,10 +3,12 @@
  * declenché par l'utilisateur 
  */
 
-package main;
+package Control;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import Vue.Affichage;
 
 public class Control implements MouseListener {
 	Affichage game;

@@ -4,7 +4,9 @@
  *  tout en restant bornée par les dimensions définies dans la classe Affichage .
  */
 
-package main;
+package Model;
+
+import Vue.Affichage;
 
 public class Etat {
 	private int x;
