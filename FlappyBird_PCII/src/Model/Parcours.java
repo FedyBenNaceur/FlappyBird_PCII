@@ -1,5 +1,5 @@
 /*class Parcours qui s'occupe de la logique derriere la ligne brisée*/
-package Model; 
+package Model;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -7,14 +7,13 @@ import java.util.Random;
 
 import Vue.Affichage;
 
-
 public class Parcours {
-	public ArrayList<Point> points;// la liste des points qui represente 
+	public ArrayList<Point> points;// la liste des points qui represente
 	public Affichage game;
 	private int pos = 0;
 	public final int px = 1;// cet attribut est utilisé pour faire avancer la position de quelques pixels
-    
-	//constructeur de la classe parcours 
+
+	// constructeur de la classe parcours
 	public Parcours(Affichage a) {
 		points = new ArrayList<Point>();
 		game = a;
@@ -22,11 +21,11 @@ public class Parcours {
 		pos = 0;
 
 	}
-    
-	/**initialisePoints
-	 * Procedure qui initialise le tableau de points de manière aleatoire avec une
-	 *  distance mininmale de 20 entre deux points et maximale de 40 .
-	 *  Ps : J'attends le retour de notre charge de tp pour amelioré mon algo
+
+	/**
+	 * initialisePoints Procedure qui initialise le tableau de points de manière
+	 * aleatoire avec une distance mininmale de 20 entre deux points et maximale de
+	 * 40 . Ps : J'attends le retour de notre charge de tp pour amelioré mon algo
 	 */
 	private void initialisePoints() {
 		// positionner le premier point au milieu de l'ovale
@@ -34,41 +33,53 @@ public class Parcours {
 		int prevy = game.HAUTEUR - (game.HEIGHT / 2);
 		points.add(new Point(prevx, prevy));
 		Random r = new Random();
+		int aff = 0 ;
+		int y = prevy ;
 		while (prevx <= game.LARGEUR) {
-			int x = r.nextInt((prevx + 40) - (prevx + 20)) + (prevx + 20);//50 30 30 
-			int y = r.nextInt(game.HAUTEUR);
+			int x = r.nextInt((prevx + 40) - (prevx + 20)) + (prevx + 20);
+			if (aff!=1) {
+				 y = r.nextInt(game.HAUTEUR);
+				 aff ++ ;
+			} else {
+				y = r.nextInt((prevy + 2) - (prevy + 1)) + (prevy + 2);
+				if (y>game.HAUTEUR)
+					y =  prevy ;
+				aff = 0 ;
+			}
 			points.add(new Point(x, y));
 			prevx = x;
-			prevy = y;	
+			prevy = y;
 		}
 	}
-	
-	
-	/**addPoint
-	 * Procedure qui permet d'ajouter un points dans la liste tout en conservant les contraintes
-	 * fixées sur cette liste .
+
+	/**
+	 * addPoint Procedure qui permet d'ajouter un points dans la liste tout en
+	 * conservant les contraintes fixées sur cette liste .
 	 */
-	public void addPoint () {
-		Point last = points.get(points.size()-1);
+	public void addPoint() {
+		Point last = points.get(points.size() - 1);
 		Random r = new Random();
-		int offset = (points.get(1).x-points.get(0).x);
+		int offset = (points.get(1).x - points.get(0).x);
 		int x = r.nextInt((last.x + 50) - (last.x + 30)) + (last.x + 30);
 		int y = r.nextInt(game.HAUTEUR);
-		points.add(new Point(x,y));
+		points.add(new Point(x, y));
 		removePoint(offset);
 	}
-	
-	/**removePoint 
-	 * Procedure qui permet de supprimer un element de la liste et mettre à jour la position des points
-	 * @param offset : ce paramatre permet de definir le decalage necessaire pour decaler les points
+
+	/**
+	 * removePoint Procedure qui permet de supprimer un element de la liste et
+	 * mettre à jour la position des points
+	 * 
+	 * @param offset : ce paramatre permet de definir le decalage necessaire pour
+	 *               decaler les points
 	 */
-	public void removePoint (int offset) {
-		for(int i = 0 ; i < points.size()-1 ; i++ ) {
-			points.set(i, new Point(points.get(i).x - offset , points.get(i).y));
+	public void removePoint(int offset) {
+		for (int i = 0; i < points.size() - 1; i++) {
+			points.set(i, new Point(points.get(i).x - offset, points.get(i).y));
 		}
 		points.remove(0);
 	}
-	
+
 	/**
 	 * renvoie la liste de points
 	 * 
@@ -76,14 +87,13 @@ public class Parcours {
 	 */
 	public Point[] getParcours() {
 		Point[] res = new Point[points.size()];
-		for (int i = 0 ; i<points.size();i++) {
-			int x = points.get(i).x  ; 
-		    int y = points.get(i).y;
-		    res[i] = new Point(x,y);
-	     }
-		return res ;
+		for (int i = 0; i < points.size(); i++) {
+			int x = points.get(i).x;
+			int y = points.get(i).y;
+			res[i] = new Point(x, y);
+		}
+		return res;
 	}
-
 
 	// getteur de l'attribut Position
 	public int getPosition() {
