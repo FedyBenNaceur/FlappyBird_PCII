@@ -8,6 +8,8 @@ package Control;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
 import Vue.Affichage;
 
 public class Control implements MouseListener {
@@ -24,9 +26,11 @@ public class Control implements MouseListener {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.game.player.jump();
-		game.repaint();
-
+		if (!game.player.gameEnd) {
+			this.game.player.jump();
+			game.revalidate();
+			game.repaint();
+		}
 	}
 
 	@Override

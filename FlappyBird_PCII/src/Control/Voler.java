@@ -4,7 +4,7 @@ import Model.Etat;
 
 public class Voler extends Thread {
 	private Etat player;
-	private final int time_to_sleep = 800;// determine combien de temps le thread doit attendre avant de faire descendre
+	private final int time_to_sleep = 200;// determine combien de temps le thread doit attendre avant de faire descendre
 											// l'eclipse
 	public Voler(Etat p) {
 		super("voler");
@@ -16,7 +16,7 @@ public class Voler extends Thread {
 	 */
 	@Override
 	public void run() {
-		while (true) {	
+		while (!player.gameEnd) {
 			player.moveDownn();
 			try {
 				Thread.sleep(time_to_sleep);

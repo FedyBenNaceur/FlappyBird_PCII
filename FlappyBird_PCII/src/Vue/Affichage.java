@@ -17,6 +17,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Control.Control;
@@ -24,21 +25,22 @@ import Model.Etat;
 import Model.Parcours;
 
 public class Affichage extends JPanel {
-	public final int LARGEUR = 600;// largeur et hauteur correspondent respectivement a la largeur et hauteur de la Panel
+	public final int LARGEUR = 600;// largeur et hauteur correspondent respectivement a la largeur et hauteur de la									// Panel
 	public final int HAUTEUR = 400;
-	public final int HEIGHT = 100; // Les deux variables height et width représentent les dimensions de l’éclipse
-	public final int WIDTH = 50;
+	public final int HEIGHT = 60; // Les deux variables height et width représentent les dimensions de l’éclipse
+	public final int WIDTH = 20;
 	public Etat player;
 	public Control c;
 	public Parcours p;
-	private JLabel score ;
+	private JLabel score;
 
 	/* constructeur de la classe Affichage */
 	public Affichage() {
 		this.setPreferredSize(new Dimension(LARGEUR, HAUTEUR));
 		this.setBackground(Color.cyan);
-		this.score = new JLabel ("Score	") ;
-		this.add(score);	
+		this.score = new JLabel("Score	");
+		this.add(score);
+	
 	}
 
 	/**
@@ -77,36 +79,34 @@ public class Affichage extends JPanel {
 	public void paint(Graphics g) {
 		super.paint(g);
 		flyBird(player.getX(), player.getHauteur(), WIDTH, HEIGHT, g);
+		//g.drawRect(player.getX(), player.getHauteur(), WIDTH, HEIGHT);
 		paintParcours(g);
 		setScore();
+		super.revalidate();
+		super.repaint();
 	}
 
-
-	
-	/**paintParcours
-	 * Procedure qui permet de peindre la ligne brisée 
-	 * @param g 
+	/**
+	 * paintParcours Procedure qui permet de peindre la ligne brisée
+	 * 
+	 * @param g
 	 */
+
 	public void paintParcours(Graphics g) {
 		Point[] tmp = p.getParcours();
-		try {
-			for (int i = 0; i < p.points.size()-2; i++) {
-				g.setColor(Color.MAGENTA);
-				g.drawLine(tmp[i].x, tmp[i].y, tmp[i + 1].x, tmp[i + 1].y);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.print("tneket");
+
+		for (int i = 0; i < p.points.size() - 2; i++) {
+			g.setColor(Color.MAGENTA);
+			g.drawLine(tmp[i].x, tmp[i].y, tmp[i + 1].x, tmp[i + 1].y);
 		}
 
 	}
-	
-	
-	/**setScore
-	 * methode qui met à jour la valeur du score
+
+	/**
+	 * setScore methode qui met à jour la valeur du score
 	 */
-	private void setScore () {
-		this.score.setText("Score:"+this.p.getPosition());
+	private void setScore() {
+		this.score.setText("Score:" + this.p.getPosition());
 	}
 
 }

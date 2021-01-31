@@ -11,7 +11,8 @@ public class Parcours {
 	public ArrayList<Point> points;// la liste des points qui represente
 	public Affichage game;
 	private int pos = 0;
-	public final int px = 1;// cet attribut est utilisé pour faire avancer la position de quelques pixels
+	public final int px = 3;// cet attribut est utilisé pour faire avancer la position de quelques pixels
+	public Point[] droite ;
 
 	// constructeur de la classe parcours
 	public Parcours(Affichage a) {
@@ -19,7 +20,10 @@ public class Parcours {
 		game = a;
 		initialisePoints();
 		pos = 0;
-
+		droite = new Point[2];
+		this.droite[0] = new Point(0,0);
+		this.droite[1] = new Point(0,0);
+		updateDroite();
 	}
 
 	/**
@@ -27,29 +31,20 @@ public class Parcours {
 	 * aleatoire avec une distance mininmale de 20 entre deux points et maximale de
 	 * 40 . Ps : J'attends le retour de notre charge de tp pour amelioré mon algo
 	 */
+
 	private void initialisePoints() {
 		// positionner le premier point au milieu de l'ovale
-		int prevx = 10 + (game.WIDTH / 2);
-		int prevy = game.HAUTEUR - (game.HEIGHT / 2);
-		points.add(new Point(prevx, prevy));
+		int x = 20;
+		int y = game.HAUTEUR / 2;
+		points.add(new Point(x, y));
 		Random r = new Random();
-		int aff = 0 ;
-		int y = prevy ;
-		while (prevx <= game.LARGEUR) {
-			int x = r.nextInt((prevx + 40) - (prevx + 20)) + (prevx + 20);
-			if (aff!=1) {
-				 y = r.nextInt(game.HAUTEUR);
-				 aff ++ ;
-			} else {
-				y = r.nextInt((prevy + 2) - (prevy + 1)) + (prevy + 2);
-				if (y>game.HAUTEUR)
-					y =  prevy ;
-				aff = 0 ;
-			}
+		while (x <= game.LARGEUR) {
+			x += 50 + r.nextInt(15);
+			y = r.nextInt(game.player.HEIGHT_max - game.player.HEIGHT_min) + game.player.HEIGHT_min;
 			points.add(new Point(x, y));
-			prevx = x;
-			prevy = y;
 		}
+		
+
 	}
 
 	/**
@@ -59,25 +54,10 @@ public class Parcours {
 	public void addPoint() {
 		Point last = points.get(points.size() - 1);
 		Random r = new Random();
-		int offset = (points.get(1).x - points.get(0).x);
-		int x = r.nextInt((last.x + 50) - (last.x + 30)) + (last.x + 30);
-		int y = r.nextInt(game.HAUTEUR);
+		// int offset = (points.get(1).x - points.get(0).x);
+		int x = r.nextInt((last.x + 90) - (last.x + 75)) + (last.x + 75);
+		int y = r.nextInt(game.player.HEIGHT_max - game.player.HEIGHT_min) + game.player.HEIGHT_min;
 		points.add(new Point(x, y));
-		removePoint(offset);
-	}
-
-	/**
-	 * removePoint Procedure qui permet de supprimer un element de la liste et
-	 * mettre à jour la position des points
-	 * 
-	 * @param offset : ce paramatre permet de definir le decalage necessaire pour
-	 *               decaler les points
-	 */
-	public void removePoint(int offset) {
-		for (int i = 0; i < points.size() - 1; i++) {
-			points.set(i, new Point(points.get(i).x - offset, points.get(i).y));
-		}
-		points.remove(0);
 	}
 
 	/**
@@ -85,12 +65,14 @@ public class Parcours {
 	 * 
 	 * @return liste des points qui constitue la ligne brisée visible
 	 */
+
 	public Point[] getParcours() {
+		// updateDroite()
 		Point[] res = new Point[points.size()];
+		updateDroite();
 		for (int i = 0; i < points.size(); i++) {
-			int x = points.get(i).x;
-			int y = points.get(i).y;
-			res[i] = new Point(x, y);
+			Point p = points.get(i);
+			res[i] = p;
 		}
 		return res;
 	}
@@ -103,8 +85,32 @@ public class Parcours {
 	// setteur de l'attribut Position
 	public void setPosition() {
 		pos += px;
-		addPoint();
+		for (int i = 0; i < points.size(); i++) {
+			if (points.get(i).x - px < -90) {
+				points.remove(i);
+			}
+		/*if (points.get(i).x - px < game.LARGEUR && points.get(i).x - px > 550  ) {
+				addPoint();
+			}*/
+			points.set(i, new Point(points.get(i).x - px, points.get(i).y));
+			
+		}
+		if (points.get(points.size()-1).x  <= game.LARGEUR  ) {
+			addPoint();
+		}
+		
 		game.repaint();
 	}
+	
+    private void updateDroite() {
+    	droite[0]= points.get(0);
+		droite[1]=points.get(1);
+    }
+    
+    public float fstY() {
+    	float pente = (droite[1].y - droite[0].y) /(droite[0].x-droite[1].x) ;
+    	float b = droite[0].y - (pente*droite[0].x ) ;
+    	return pente + b ;
+    }
 
 }
