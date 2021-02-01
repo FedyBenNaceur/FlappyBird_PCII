@@ -73,6 +73,7 @@ public class Affichage extends JPanel {
 	public void initialiseParcours(Parcours p) {
 		this.p = p;
 	}
+	
 
 	/* Affichage */
 	@Override
@@ -95,7 +96,7 @@ public class Affichage extends JPanel {
 	public void paintParcours(Graphics g) {
 		Point[] tmp = p.getParcours();
 
-		for (int i = 0; i < p.points.size() - 2; i++) {
+		for (int i = 0; i < p.points.size() - 1; i++) {
 			g.setColor(Color.MAGENTA);
 			g.drawLine(tmp[i].x, tmp[i].y, tmp[i + 1].x, tmp[i + 1].y);
 		}
@@ -108,5 +109,6 @@ public class Affichage extends JPanel {
 	private void setScore() {
 		this.score.setText("Score:" + this.p.getPosition());
 	}
+	
 
 }

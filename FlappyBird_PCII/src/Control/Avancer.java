@@ -6,6 +6,7 @@ import Vue.Affichage;
 public class Avancer extends Thread {
 	private Affichage game;
 	private final int time_to_sleep = 100;
+	private boolean fst = true ;
 
 	public Avancer(Affichage g) {
 		super("Avancer");
@@ -16,6 +17,14 @@ public class Avancer extends Thread {
 	@Override
 	public void run() {
 		while (!game.player.gameEnd) {
+			if (fst) {
+				try {
+					Thread.sleep(2000);
+					fst = false ;
+				}catch (Exception e ) {
+					e.printStackTrace();
+				}
+			}
 			game.p.setPosition();
 			game.player.testPerdu();
 			try {

@@ -12,7 +12,7 @@ public class Parcours {
 	public Affichage game;
 	private int pos = 0;
 	public final int px = 3;// cet attribut est utilisé pour faire avancer la position de quelques pixels
-	public Point[] droite ;
+
 
 	// constructeur de la classe parcours
 	public Parcours(Affichage a) {
@@ -20,10 +20,7 @@ public class Parcours {
 		game = a;
 		initialisePoints();
 		pos = 0;
-		droite = new Point[2];
-		this.droite[0] = new Point(0,0);
-		this.droite[1] = new Point(0,0);
-		updateDroite();
+
 	}
 
 	/**
@@ -69,7 +66,6 @@ public class Parcours {
 	public Point[] getParcours() {
 		// updateDroite()
 		Point[] res = new Point[points.size()];
-		updateDroite();
 		for (int i = 0; i < points.size(); i++) {
 			Point p = points.get(i);
 			res[i] = p;
@@ -102,15 +98,5 @@ public class Parcours {
 		game.repaint();
 	}
 	
-    private void updateDroite() {
-    	droite[0]= points.get(0);
-		droite[1]=points.get(1);
-    }
-    
-    public float fstY() {
-    	float pente = (droite[1].y - droite[0].y) /(droite[0].x-droite[1].x) ;
-    	float b = droite[0].y - (pente*droite[0].x ) ;
-    	return pente + b ;
-    }
-
+ 
 }
